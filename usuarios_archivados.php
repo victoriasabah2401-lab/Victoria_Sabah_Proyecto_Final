@@ -20,7 +20,7 @@ $archivados = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>Usuarios Archivados</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="/Victoria_Sabah_proyec_login/style.css">
 </head>
 <body>
 <header class="barra-superior">
@@ -28,7 +28,7 @@ $archivados = $stmt->fetchAll();
         <span class="marca">Usuarios Archivados</span>
         <nav>
             <a href="admin_usuarios.php" class="btn btn-secundario">Volver a Activos</a>
-            <a href="cerrar_sesion.php" class="btn btn-peligro">Cerrar sesión</a>
+            <a href="logout.php" class="btn btn-peligro">Cerrar sesión</a>
         </nav>
     </div>
 </header>
@@ -65,7 +65,7 @@ $archivados = $stmt->fetchAll();
                                 <td><?= escapar($u['email']) ?></td>
                                 <td><?= escapar($u['archivado_en']) ?></td>
                                 <td>
-                                    <form action="reactivar_usuario.php" method="POST" onsubmit="return confirm('¿Reactivar la cuenta de este usuario?');">
+                                    <form action="reactivar_usuarios.php" method="POST" onsubmit="return confirm('¿Reactivar la cuenta de este usuario?');">
                                         <input type="hidden" name="id" value="<?= (int)$u['id'] ?>">
                                         <input type="hidden" name="csrf_token" value="<?= escapar($token_csrf) ?>">
                                         <button type="submit" class="btn btn-primario btn-sm">Reactivar</button>

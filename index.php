@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="alerta alerta-error"><?= escapar($error) ?></div>
         <?php endif; ?>
 
-        <form action="login.php" method="POST">
+        <form action="index.php" method="POST">
             <div class="grupo-campo">
                 <label for="email">Correo electrónico</label>
                 <input type="email" id="email" name="email" value="<?= escapar($email) ?>" required>
@@ -77,8 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn btn-primario btn-bloque">Ingresar</button>
         </form>
 
-        <p class="texto-pie">¿No tenés cuenta? <a href="registro.php">Registrate acá</a></p>
+        <p class="texto-pie">No tengo cuenta <a href="registro.php">Registrarme</a></p>
     </div>
 </main>
 </body>
 </html>
+

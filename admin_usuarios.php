@@ -90,7 +90,7 @@ $usuarios = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>Panel Administrativo</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="barra-superior">
@@ -99,7 +99,7 @@ $usuarios = $stmt->fetchAll();
         <nav>
             <a href="panel.php" class="btn btn-secundario">Mi Perfil</a>
             <a href="usuarios_archivados.php" class="btn btn-secundario">Ver Archivados</a>
-            <a href="cerrar_sesion.php" class="btn btn-peligro">Cerrar sesión</a>
+            <a href="logout.php" class="btn btn-peligro">Cerrar sesión</a>
         </nav>
     </div>
 </header>
@@ -200,10 +200,10 @@ $usuarios = $stmt->fetchAll();
                                 <td><?= escapar($u['email']) ?></td>
                                 <td><span class="etiqueta"><?= escapar($u['rol']) ?></span></td>
                                 <td class="acciones">
-                                    <a href="editar_usuario.php?id=<?= (int)$u['id'] ?>" class="btn btn-secundario btn-sm">Editar</a>
+                                    <a href="editar_usuarios.php?id=<?= (int)$u['id'] ?>" class="btn btn-secundario btn-sm">Editar</a>
 
                                     <?php if ((int)$u['id'] !== (int)$_SESSION['usuario_id']): ?>
-                                        <form action="archivar_usuario.php" method="POST" style="display:inline;" onsubmit="return confirm('¿Seguro que deseás archivar esta cuenta?');">
+                                        <form action="archivar_usuarios.php" method="POST" style="display:inline;" onsubmit="return confirm('¿Seguro que deseás archivar esta cuenta?');">
                                             <input type="hidden" name="id" value="<?= (int)$u['id'] ?>">
                                             <input type="hidden" name="csrf_token" value="<?= escapar($token_csrf) ?>">
                                             <button type="submit" class="btn btn-peligro btn-sm">Archivar</button>

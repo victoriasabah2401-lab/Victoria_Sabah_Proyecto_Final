@@ -2,7 +2,7 @@
 require_once __DIR__ . '/conexion.php';
 
 if (!isset($_SESSION['usuario_id'])) {
-    header('Location: login.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -16,7 +16,7 @@ $usuario = $stmt->fetch();
 
 if (!$usuario) {
     session_destroy();
-    header('Location: login.php');
+    header('Location: index.php');
     exit;
 }
 ?>
@@ -24,18 +24,18 @@ if (!$usuario) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Panel Personal</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <title>Panel personal</title>
+    <link rel="stylesheet" href="/Victoria_Sabah_proyec_login/style.css">
 </head>
 <body>
 <header class="barra-superior">
     <div class="contenedor barra-contenido">
-        <span class="marca">Sistema de Usuarios</span>
+        <span class="marca">Información sobre tu cuenta</span>
         <nav>
             <?php if ($usuario['rol'] === 'admin'): ?>
                 <a href="admin_usuarios.php" class="btn btn-secundario">Panel Admin</a>
             <?php endif; ?>
-            <a href="cerrar_sesion.php" class="btn btn-peligro">Cerrar sesión</a>
+            <a href="logout.php" class="btn btn-peligro">Cerrar sesión</a>
         </nav>
     </div>
 </header>
@@ -43,13 +43,13 @@ if (!$usuario) {
 <main class="contenedor">
     <div class="tarjeta">
         <h1>Bienvenido/a, <?= escapar($usuario['nombre']) ?></h1>
-        <p class="subtitulo">Estos son tus datos personales registrados en el sistema:</p>
+        <p class="subtitulo">Datos personales:</p>
 
         <div class="datos-perfil">
             <p><strong>Nombre completo:</strong> <?= escapar($usuario['nombre'] . ' ' . $usuario['apellido']) ?></p>
             <p><strong>DNI:</strong> <?= escapar($usuario['dni']) ?></p>
             <p><strong>Correo electrónico:</strong> <?= escapar($usuario['email']) ?></p>
-            <p><strong>Rol de cuenta:</strong> <span class="etiqueta"><?= escapar($usuario['rol']) ?></span></p>
+            <p><strong>Rol de tu cuenta:</strong> <span class="etiqueta"><?= escapar($usuario['rol']) ?></span></p>
             <p><strong>Fecha de registro:</strong> <?= escapar($usuario['creado_en']) ?></p>
         </div>
     </div>

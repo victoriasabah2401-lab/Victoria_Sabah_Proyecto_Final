@@ -12,6 +12,7 @@ if (!$id || $id < 1) {
     exit('Identificador de usuario inválido.');
 }
 
+
 $stmt = $conexion->prepare('SELECT id, nombre, apellido, dni, email FROM usuarios WHERE id = :id AND archivado_en IS NULL LIMIT 1');
 $stmt->execute([':id' => $id]);
 $usuario = $stmt->fetch();
@@ -84,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Editar Usuario</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main class="contenedor-centrado">
@@ -101,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
-        <form action="editar_usuario.php?id=<?= (int)$usuario['id'] ?>" method="POST">
+        <form action="editar_usuarios.php?id=<?= (int)$usuario['id'] ?>" method="POST">
             <input type="hidden" name="csrf_token" value="<?= escapar($token_csrf) ?>">
 
             <div class="grupo-campo">
