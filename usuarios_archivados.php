@@ -20,7 +20,7 @@ $archivados = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>Usuarios Archivados</title>
-    <link rel="stylesheet" href="/Victoria_Sabah_proyec_login/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="barra-superior">
