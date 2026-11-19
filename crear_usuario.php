@@ -59,7 +59,7 @@ $password,
 PASSWORD_DEFAULT
 );
 
-#Inserción preparada (protegida contra SQL injection)
+
 $sql = 'INSERT INTO usuarios
 (nombre, email, password_hash, rol)
 VALUES (:nombre, :email, :password_hash, :rol)';
@@ -73,7 +73,7 @@ $stmt->execute([ #siempre establece 'rol' => 'usuario'. El cliente no puede modi
 'rol' => 'usuario'
 ]);
 
-#Consulta preparada para buscar usuario
+/*Buscar usuario*/
 $sql = 'SELECT id, nombre, email, password_hash, rol
 FROM usuarios
 WHERE email = :email
@@ -83,7 +83,7 @@ $stmt = $conexion->prepare($sql);
 $stmt->execute(['email' => $email]);
 $usuario = $stmt->fetch();
 
-#Verificación de contraseña y creación de sesión
+/*Verificación de contraseña y creación de sesión*/
 if ($usuario !== false &&
 password_verify($password, $usuario['password_hash']))
 {

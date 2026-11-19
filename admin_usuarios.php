@@ -208,6 +208,19 @@ $usuarios = $stmt->fetchAll();
                                             <input type="hidden" name="csrf_token" value="<?= escapar($token_csrf) ?>">
                                             <button type="submit" class="btn btn-peligro btn-sm">Archivar</button>
                                         </form>
+                                        <form action="eliminar_usuario.php" method="POST"
+                                          style="display:inline;"
+      o                                   nsubmit="return confirm('¿Estás seguro/a de que querés eliminar definitivamente este usuario? Esta acción no se puede deshacer.');">
+
+                                        <input type="hidden" name="id" value="<?= (int)$u['id'] ?>">
+
+                                         <input type="hidden" name="csrf_token"
+                                          value="<?= escapar($token_csrf) ?>">
+
+                                        <button type="submit" class="btn btn-peligro btn-sm">
+                                         Eliminar
+                                         </button>
+                                        </form>
                                     <?php endif; ?>
                                 </td>
                             </tr>
